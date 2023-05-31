@@ -447,7 +447,6 @@ class VentanaUpload extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-
           Positioned(
             bottom: 0,
             left: 0,
@@ -495,6 +494,89 @@ class VentanaUpload extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 60,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    height: 140, // Altura del contenedor en blanco para ajustar el espaciado
+                    color: Colors.white,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Localidad'),
+                  ),
+                  SizedBox(height: 16.0),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Evento'),
+                  ),
+                  SizedBox(height: 16.0),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Fecha'),
+                  ),
+                  SizedBox(height: 16.0),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Hora'),
+                  ),
+                  Container(
+                    height: 20, // Altura del contenedor en blanco para ajustar el espaciado
+                    color: Colors.white,
+                  ),
+                  SizedBox(height: 16.0),
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      child: Text('Cargar imagenes', style: TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        // Acción al presionar el botón "Cargar imagen"
+                      },
+                    ),
+                  ),
+                  Container(
+                    height: 40, // Altura del contenedor en blanco para ajustar el espaciado
+                    color: Colors.white,
+                  ),
+                  SizedBox(height: 16.0),
+                  Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.purple,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      child: Text('Subir evento', style: TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        // Acción al presionar el botón "Subir evento"
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -508,6 +590,50 @@ class VentanaProfile extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
+          // Foto de perfil y nombre del usuario
+          ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 38), // Ajusta el espacio de relleno según tus necesidades
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('assets/perfil.jpg'), // Imagen de perfil
+            ),
+            title: Text('Pablo69_'),
+              subtitle: Text('''Amante de los Viajes y aventuras ✈️🗺️
+Explorando el mundo 🌎✨
+🗓️ ¡Siempre buscando la próxima escapada!
+💼 Trabajando en hacer realidad mi sueño de viajar por el mundo.
+🌟 Compartiendo consejos de viaje, guías de destinos y recomendaciones de lugares imperdibles 🗺️
+''',
+                style: TextStyle(fontSize: 12.0), // Ajusta el tamaño de fuente a 20.0
+              )
+          ),
+          // Número de seguidores y publicaciones
+          ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 170),
+            title: Text('Seguidores'),
+            subtitle: Text('10k'), // Número de seguidores
+
+          ),
+          ListTile(
+            title: Text('Publicaciones'),
+            subtitle: Text('10'), // Número de publicaciones
+          ),
+
+          GridView.count(
+          crossAxisCount: 1, // Una foto por fila
+          children: [
+            Container(
+
+              margin: EdgeInsets.all(10.0), // Margen de 10 en todos los lados del contenedor
+              padding: EdgeInsets.all(5.0), // Padding de 5 en todos los lados del contenedor
+              child: Image.asset('assets/imagenes/post1.jpg'), // Ruta de la primera foto
+            ),
+            Container(
+              margin: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(5.0),
+              child: Image.asset('assets/imagenes/post2.jpg'), // Ruta de la segunda foto
+            ),
+          ],
+      ),
 
           Positioned(
             bottom: 0,
