@@ -587,54 +587,105 @@ class VentanaProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Foto de perfil y nombre del usuario
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 38), // Ajusta el espacio de relleno según tus necesidades
-            leading: CircleAvatar(
-              backgroundImage: AssetImage('assets/perfil.jpg'), // Imagen de perfil
+          Container(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 30.0),
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundImage: AssetImage('assets/imagenes/profile.jpeg'),
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                const Text(
+                  'Seguidores: 120',
+                    style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold
+                    ),
+                ),
+                const Text(
+                  'Eventos: 20',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                const Text(
+                  'Pablo_69',
+                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                ),
+
+                SizedBox(height: 16.0),
+                Text(
+                  '• Amante de los Viajes y aventuras ✈️🗺️',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                Container(
+                  height: 7, // Altura del contenedor en blanco para ajustar el espaciado
+                  color: Colors.white,
+                ),
+                Text(
+                  'Explorando el mundo 🌎✨',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                Container(
+                  height: 7, // Altura del contenedor en blanco para ajustar el espaciado
+                  color: Colors.white,
+                ),
+                Text(
+                  '• 🗓️ ¡Siempre buscando la próxima escapada!',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                Container(
+                  height: 7, // Altura del contenedor en blanco para ajustar el espaciado
+                  color: Colors.white,
+                ),
+                Text(
+                  '• 💼 Trabajando en hacer realidad mi sueño de viajar por el mundo.',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                Container(
+                  height: 7, // Altura del contenedor en blanco para ajustar el espaciado
+                  color: Colors.white,
+                ),
+                Text(
+                  '• Explorando el mundo 🌎✨',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                Container(
+                  height: 7, // Altura del contenedor en blanco para ajustar el espaciado
+                  color: Colors.white,
+                ),
+                Text(
+                  '• 🌟 Compartiendo consejos de viaje, guías de destinos y recomendaciones de lugares imperdibles 🗺️',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ],
             ),
-            title: Text('Pablo69_'),
-              subtitle: Text('''Amante de los Viajes y aventuras ✈️🗺️
-Explorando el mundo 🌎✨
-🗓️ ¡Siempre buscando la próxima escapada!
-💼 Trabajando en hacer realidad mi sueño de viajar por el mundo.
-🌟 Compartiendo consejos de viaje, guías de destinos y recomendaciones de lugares imperdibles 🗺️
-''',
-                style: TextStyle(fontSize: 12.0), // Ajusta el tamaño de fuente a 20.0
-              )
           ),
-          // Número de seguidores y publicaciones
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 170),
-            title: Text('Seguidores'),
-            subtitle: Text('10k'), // Número de seguidores
-
-          ),
-          ListTile(
-            title: Text('Publicaciones'),
-            subtitle: Text('10'), // Número de publicaciones
-          ),
-
-          GridView.count(
-          crossAxisCount: 1, // Una foto por fila
-          children: [
-            Container(
-
-              margin: EdgeInsets.all(10.0), // Margen de 10 en todos los lados del contenedor
-              padding: EdgeInsets.all(5.0), // Padding de 5 en todos los lados del contenedor
-              child: Image.asset('assets/imagenes/post1.jpg'), // Ruta de la primera foto
+          Divider(), // Línea divisora para separar el perfil del grid de fotos
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 1, // Número de fotos por fila
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              padding: EdgeInsets.all(16.0),
+              children: [
+                Image.asset('assets/imagenes/post2.jpg'), // Reemplaza con la ruta de la imagen 1
+                Image.asset('ruta_de_la_imagen_2'), // Reemplaza con la ruta de la imagen 2
+                Image.asset('ruta_de_la_imagen_3'), // Reemplaza con la ruta de la imagen 3
+                // Agrega más imágenes según sea necesario
+              ],
             ),
-            Container(
-              margin: EdgeInsets.all(10.0),
-              padding: EdgeInsets.all(5.0),
-              child: Image.asset('assets/imagenes/post2.jpg'), // Ruta de la segunda foto
-            ),
-          ],
-      ),
-
+          ),
           Positioned(
             bottom: 0,
             left: 0,
@@ -648,10 +699,7 @@ Explorando el mundo 🌎✨
                   IconButton(
                     icon: Icon(Icons.home),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaHome()),
-                      );
+                      // Acción al presionar el botón "home"
                     },
                   ),
                   IconButton(
@@ -675,7 +723,10 @@ Explorando el mundo 🌎✨
                   IconButton(
                     icon: Icon(Icons.person),
                     onPressed: () {
-                      // Acción al presionar el botón "profile"
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VentanaProfile()),
+                      );
                     },
                   ),
                 ],
@@ -683,6 +734,13 @@ Explorando el mundo 🌎✨
             ),
           ),
         ],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.settings),
+        onPressed: () {
+          // Acción al presionar el botón de configuración
+        },
       ),
     );
   }
