@@ -595,27 +595,41 @@ class VentanaProfile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.only(top: 30.0),
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundImage: AssetImage('assets/imagenes/profile.jpeg'),
-                  ),
-                ),
-                SizedBox(height: 16.0),
-                const Text(
-                  'Seguidores: 120',
-                    style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 28.0, right: 29.0),
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundImage: AssetImage('assets/imagenes/profile.jpeg'),
+                      ),
                     ),
-                ),
-                const Text(
-                  'Eventos: 20',
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold
-                  ),
+                    SizedBox(height: 16.0),
+
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Seguidores: 120',
+                          style: TextStyle(
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          height: 15, // Altura del contenedor en blanco para ajustar el espaciado
+                          color: Colors.white,
+                        ),
+                        Text(
+                          'Eventos: 2',
+                          style: TextStyle(
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16.0),
                 const Text(
@@ -641,7 +655,7 @@ class VentanaProfile extends StatelessWidget {
                   color: Colors.white,
                 ),
                 Text(
-                  '• 🗓️ ¡Siempre buscando la próxima escapada!',
+                  '• ¡Siempre buscando la próxima escapada! 🗓️',
                   style: TextStyle(fontSize: 16.0),
                 ),
                 Container(
@@ -649,7 +663,7 @@ class VentanaProfile extends StatelessWidget {
                   color: Colors.white,
                 ),
                 Text(
-                  '• 💼 Trabajando en hacer realidad mi sueño de viajar por el mundo.',
+                  '• Trabajando en hacer realidad mi sueño de viajar por el mundo.💼 ',
                   style: TextStyle(fontSize: 16.0),
                 ),
                 Container(
@@ -665,7 +679,7 @@ class VentanaProfile extends StatelessWidget {
                   color: Colors.white,
                 ),
                 Text(
-                  '• 🌟 Compartiendo consejos de viaje, guías de destinos y recomendaciones de lugares imperdibles 🗺️',
+                  '• Compartiendo consejos de viaje, guías de destinos y recomendaciones de lugares imperdibles 🗺️🌟 ',
                   style: TextStyle(fontSize: 16.0),
                 ),
               ],
@@ -736,11 +750,18 @@ class VentanaProfile extends StatelessWidget {
         ],
       ),
 
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.settings),
-        onPressed: () {
-          // Acción al presionar el botón de configuración
-        },
+      floatingActionButton:
+      Padding(padding: EdgeInsets.only(top: 68.0, right: 0.0),
+        child: Align(
+          alignment: Alignment.topRight,
+          child: FloatingActionButton(
+            backgroundColor: Colors.purple,
+            child: Icon(Icons.settings),
+            onPressed: () {
+              // Acción al presionar el botón de configuración
+            },
+          ),
+        ),
       ),
     );
   }
