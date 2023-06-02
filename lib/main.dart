@@ -313,132 +313,190 @@ class RegistrationPage extends StatelessWidget {
   }
 }
 
-
 class VentanaHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
+      body: ListView(
         children: [
-          Image.asset(
-            'assets/imagenes/gmail_logo.png',
-            fit: BoxFit.cover,
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Colors.white,
-              height: 60,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.home),
-                    onPressed: () {
-                      // Acción al presionar el botón "home"
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaSearch()),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaUpload()),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.person),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaProfile()),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
+          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 1', 'Título 1', 'Descripción 1'),
+          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 2', 'Título 2', 'Descripción 2'),
+          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 3', 'Título 3', 'Descripción 3'),
+          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 1', 'Título 1', 'Descripción 1'),
+          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 2', 'Título 2', 'Descripción 2'),
+          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 3', 'Título 3', 'Descripción 3'),
+          // Agrega más llamadas a _buildImageCard para mostrar más imágenes
         ],
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                // Acción al presionar el botón "home"
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VentanaSearch()),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VentanaUpload()),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VentanaProfile()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class VentanaSearch extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Colors.white,
-              height: 60,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.home),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaHome()),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      // Acción al presionar el botón "search"
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaUpload()),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.person),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VentanaProfile()),
-                      );
-                    },
-                  ),
-                ],
+  Widget _buildImageCard(BuildContext context, String imagePath, String username, String title, String description) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Container(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(imagePath),
+                ),
+                SizedBox(width: 8),
+                Text(
+                  username,
+                  style: TextStyle(color: Colors.black),
+                ),
+              ],
+            ),
+            SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 4),
+            Text(
+              description,
+              style: TextStyle(color: Colors.black),
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.favorite_border),
+                  onPressed: () {
+                    // Acción cuando se presiona el botón de corazón
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.event),
+                  onPressed: () {
+                    // Acción cuando se presiona el botón de apuntarse a un evento
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.share),
+                  onPressed: () {
+                    // Acción cuando se presiona el botón de compartir
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
-}
 
+  class VentanaSearch extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                color: Colors.white,
+                height: 60,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.home),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VentanaHome()),
+                        );
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () {
+                        // Acción al presionar el botón "search"
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VentanaUpload()),
+                        );
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.person),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VentanaProfile()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
 class VentanaUpload extends StatelessWidget {
   @override
