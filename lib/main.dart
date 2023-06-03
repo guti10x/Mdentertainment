@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -319,13 +320,10 @@ class VentanaHome extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 1', 'Título 1', 'Descripción 1'),
-          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 2', 'Título 2', 'Descripción 2'),
-          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 3', 'Título 3', 'Descripción 3'),
-          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 1', 'Título 1', 'Descripción 1'),
-          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 2', 'Título 2', 'Descripción 2'),
-          _buildImageCard(context, 'assets/imagenes/gmail_logo.png', 'Usuario 3', 'Título 3', 'Descripción 3'),
-          // Agrega más llamadas a _buildImageCard para mostrar más imágenes
+          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/gmail_logo.png', 'Usuario 1', 'Título 1', 'Descripción 1'),
+          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/gmail_logo.png', 'Usuario 2', 'Título 2', 'Descripción 2'),
+          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/gmail_logo.png', 'Usuario 3', 'Título 3', 'Descripción 3'),
+
         ],
       ),
       bottomNavigationBar: Container(
@@ -374,14 +372,28 @@ class VentanaHome extends StatelessWidget {
   }
 }
 
-  Widget _buildImageCard(BuildContext context, String imagePath, String username, String title, String description) {
-    return Card(
+Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath, String username, String title, String description) {
+  VideoPlayerController _videoPlayerController;
+  ChewieController _chewieController;
+
+  _videoPlayerController = VideoPlayerController.asset(videoPath);
+  _chewieController = ChewieController(
+    videoPlayerController: _videoPlayerController,
+    autoInitialize: true,
+    looping: true,
+    showControls: true,
+  );
+  return Card(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Container(
         padding: EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Chewie(
+              controller: _chewieController,
+            ),
+            SizedBox(height: 8),
             Row(
               children: [
                 CircleAvatar(
@@ -395,108 +407,111 @@ class VentanaHome extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 4),
-            Text(
-              description,
-              style: TextStyle(color: Colors.black),
-            ),
-            SizedBox(height: 8),
-            Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.favorite_border),
-                  onPressed: () {
-                    // Acción cuando se presiona el botón de corazón
-                  },
+                SizedBox(height: 8),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.event),
-                  onPressed: () {
-                    // Acción cuando se presiona el botón de apuntarse a un evento
-                  },
+                SizedBox(height: 4),
+                Text(
+                  description,
+                  style: TextStyle(color: Colors.black),
                 ),
-                IconButton(
-                  icon: Icon(Icons.share),
-                  onPressed: () {
-                    // Acción cuando se presiona el botón de compartir
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  class VentanaSearch extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                color: Colors.white,
-                height: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                SizedBox(height: 8),
+                Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.home),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => VentanaHome()),
-                        );
+                      icon: Icon(Icons.favorite_border),
+                        onPressed: () {
+                          // Acción cuando se presiona el botón de corazón
+                        },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.event),
+                        onPressed: () {
+                          // Acción cuando se presiona el botón de apuntarse a un evento
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.search),
+                      icon: Icon(Icons.share),
                       onPressed: () {
-                        // Acción al presionar el botón "search"
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => VentanaUpload()),
-                        );
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.person),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => VentanaProfile()),
-                        );
+                        // Acción cuando se presiona el botón de compartir
                       },
                     ),
                   ],
                 ),
-              ),
-            ),
           ],
         ),
-      );
-    }
+      ),
+  );
+}
+
+
+
+
+  class VentanaSearch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              color: Colors.white,
+              height: 60,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.home),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VentanaHome()),
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      // Acción al presionar el botón "search"
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VentanaUpload()),
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.person),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VentanaProfile()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
 
 class VentanaUpload extends StatelessWidget {
   @override
