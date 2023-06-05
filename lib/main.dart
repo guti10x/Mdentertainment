@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
+
               Image.asset(
                 'assets/imagenes/logo.jpg',
                 width: 200.0,
@@ -290,7 +290,7 @@ class RegistrationPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => VentanaHome()),
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -1180,6 +1180,7 @@ class UserProfileConfigScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Configuración de perfil'),
+        backgroundColor: Colors.purple,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -1217,6 +1218,9 @@ class UserProfileConfigScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+              ),
               onPressed: () {
 
               },
