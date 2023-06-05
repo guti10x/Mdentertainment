@@ -320,10 +320,8 @@ class VentanaHome extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/gmail_logo.png', 'Usuario 1', 'Título 1', 'Descripción 1'),
-          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/gmail_logo.png', 'Usuario 2', 'Título 2', 'Descripción 2'),
-          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/gmail_logo.png', 'Usuario 3', 'Título 3', 'Descripción 3'),
-
+          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/profile2.jpeg', 'Adry_', 'Fin de semana en Benidorm', '¡Sol, playa, diversión y relax te esperan! #fyp'),
+          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/profile3.jpeg', 'Nano33', 'Arenal sound', 'Consulta  toda la información del festival en la web arenalsound.com'),
         ],
       ),
       bottomNavigationBar: Container(
@@ -384,81 +382,119 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
     showControls: true,
   );
   return Card(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Container(
-        padding: EdgeInsets.all(8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Chewie(
-              controller: _chewieController,
-            ),
-            SizedBox(height: 8),
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage(imagePath),
-                ),
-                SizedBox(width: 8),
-                Text(
-                  username,
-                  style: TextStyle(color: Colors.black),
-                ),
-              ],
-            ),
-                SizedBox(height: 8),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  description,
-                  style: TextStyle(color: Colors.black),
-                ),
-                SizedBox(height: 8),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.favorite_border),
-                        onPressed: () {
-                          // Acción cuando se presiona el botón de corazón
-                        },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.event),
-                        onPressed: () {
-                          // Acción cuando se presiona el botón de apuntarse a un evento
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.share),
-                      onPressed: () {
-                        // Acción cuando se presiona el botón de compartir
-                      },
-                    ),
-                  ],
-                ),
-          ],
+    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    child: Stack(
+      children: [
+        Chewie(
+          controller: _chewieController,
         ),
-      ),
+        Positioned(
+          left: 16,
+          bottom: 16,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundImage: AssetImage(imagePath),
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    username,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Text(
+                title,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 4),
+              Text(
+                description,
+                style: TextStyle(color: Colors.black),
+              ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.favorite_border),
+                    onPressed: () {
+                      // Acción cuando se presiona el botón de corazón
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.event),
+                    onPressed: () {
+                      // Acción cuando se presiona el botón de apuntarse a un evento
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.share),
+                    onPressed: () {
+                      // Acción cuando se presiona el botón de compartir
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
   );
 }
 
 
-
-
-  class VentanaSearch extends StatelessWidget {
+class VentanaSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        fit: StackFit.expand,
         children: [
+          // Fondo de la imagen
+          Positioned.fill(
+            child: Image.asset(
+              'assets/imagenes/map.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Contenido de la interfaz
+          Positioned.fill(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Campo de búsqueda de ciudades
+                  TextField(
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.9),
+                      hintText: 'Buscar ciudad',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  // Botón de explorar aquí
+                  ElevatedButton(
+                    onPressed: () {
+                      // Lógica para explorar la ciudad aquí
+                    },
+                    child: Text('Explorar aquí'),
+                  ),
+                ],
+              ),
+            ),
+          ),
 
           Positioned(
             bottom: 0,
