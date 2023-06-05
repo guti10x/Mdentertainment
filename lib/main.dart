@@ -88,9 +88,9 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               // Logo de la aplicación
               Image.asset(
-                'assets/MDentertainment.png',
-                width: 100.0,
-                height: 100.0,
+                'assets/imagenes/logo.jpg',
+                width: 200.0,
+                height: 200.0,
               ),
               SizedBox(height: 20.0),
               // Campo de entrada de usuario
@@ -381,9 +381,14 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
     looping: true,
     showControls: true,
   );
-  return Card(
-    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+  return SizedBox(
+      width: 500,
+      height: 400,
+      child: Card(
+        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 16),
+
     child: Stack(
+
       children: [
         Chewie(
           controller: _chewieController,
@@ -391,7 +396,7 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
         Positioned(
           left: 16,
           bottom: 16,
-          child: Column(
+            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -448,6 +453,7 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
         ),
       ],
     ),
+      ),
   );
 }
 
@@ -959,7 +965,7 @@ class EventWindow extends StatelessWidget {
               'Reseñas:',
               style: TextStyle(fontSize: 18, color: Colors.purple),
             ),
-            
+
             SizedBox(height: 16),
             RichText(
               text: TextSpan(
