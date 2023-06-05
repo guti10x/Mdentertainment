@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => VentanaUpload()),
+                    MaterialPageRoute(builder: (context) => VentanaHome()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -364,6 +364,22 @@ class VentanaHome extends StatelessWidget {
               },
             ),
           ],
+        ),
+      ),
+      floatingActionButton:
+      Padding(padding: EdgeInsets.only(top: 128.0, right: 0.0),
+        child: Align(
+          alignment: Alignment.topRight,
+          child: FloatingActionButton(
+            backgroundColor: Colors.purple,
+            child: Icon(Icons.notifications),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ventanaNotificaciones()),
+              );
+            },
+          ),
         ),
       ),
     );
@@ -893,6 +909,7 @@ class EventWindow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: Colors.purple,
         leading: IconButton(
@@ -922,7 +939,7 @@ class EventWindow extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Image.asset(
                   'assets/imagenes/post1.jpg',
-                  width: 200,
+                  width: 310,
                   height: 200,
                 ),
               ),
@@ -969,11 +986,24 @@ class EventWindow extends StatelessWidget {
             SizedBox(height: 16),
             RichText(
               text: TextSpan(
-                text: 'User_anónimo1:\n',
+                text: 'Oussama89_:\n',
                 style: TextStyle(fontSize: 18, color: Colors.blue),
                 children: [
                   TextSpan(
-                    text: 'Los jardines del Parque del Retiro en Madrid son impresionantes',
+                    text: 'Los jardines  son impresionantes!!!!!!',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+            RichText(
+              text: TextSpan(
+                text: 'guti10_:\n',
+                style: TextStyle(fontSize: 18, color: Colors.blue),
+                children: [
+                  TextSpan(
+                    text: 'Un lugar relajante donde desconectar',
                     style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
                 ],
@@ -985,4 +1015,161 @@ class EventWindow extends StatelessWidget {
     );
   }
 }
-
+class ventanaNotificaciones extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.purple,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'NOTIFICACIONES',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(width: 8),
+              Icon(Icons.notifications),
+            ],
+          ),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'ESTA SEMANA:',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  Icon(
+                    Icons.check,
+                    color: Colors.green,
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    'Tú evento ha sido publicado con éxito',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Icon(
+                    Icons.mail,
+                    color: Colors.blue,
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    'Juan te escribió un correo electrónico',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Anteriores:',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 8),
+              for (int i = 0; i < 5; i++)
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.check,
+                          color: Colors.green,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Tú evento ha sido publicado con éxito',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.arrow_back,
+                    color: Colors.orange,
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    'Miriam ha apuntado a tu evento',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_box),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: '',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
