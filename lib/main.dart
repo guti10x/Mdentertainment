@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo de la aplicación
+              
               Image.asset(
                 'assets/imagenes/logo.jpg',
                 width: 200.0,
@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
               ),
               SizedBox(height: 20.0),
-              // Botón de inicio de sesión
+
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text('Iniciar Sesión'),
               ),
               SizedBox(height: 30.0),
-              // Botón "No tiene cuenta aún?"
+
               TextButton(
                 onPressed: goToRegistrationPage,
                 child: Container(
@@ -156,7 +156,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 10.0),
-              // Texto "By signing up, you agree with the [Terms of Service] and [Privacy Policy]" con corchetes rojos
               Text(
                 'By signing up, you agree with the ',
                 style: TextStyle(
@@ -333,7 +332,7 @@ class VentanaHome extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.home),
               onPressed: () {
-                // Acción al presionar el botón "home"
+
               },
             ),
             IconButton(
@@ -447,19 +446,19 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
                   IconButton(
                     icon: Icon(Icons.favorite_border),
                     onPressed: () {
-                      // Acción cuando se presiona el botón de corazón
+
                     },
                   ),
                   IconButton(
                     icon: Icon(Icons.event),
                     onPressed: () {
-                      // Acción cuando se presiona el botón de apuntarse a un evento
+
                     },
                   ),
                   IconButton(
                     icon: Icon(Icons.share),
                     onPressed: () {
-                      // Acción cuando se presiona el botón de compartir
+
                     },
                   ),
                 ],
@@ -487,14 +486,13 @@ class VentanaSearch extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          // Contenido de la interfaz
           Positioned.fill(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Campo de búsqueda de ciudades
+
                   TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -506,10 +504,10 @@ class VentanaSearch extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16.0),
-                  // Botón de explorar aquí
+
                   ElevatedButton(
                     onPressed: () {
-                      // Lógica para explorar la ciudad aquí
+
                     },
                     child: Text('Explorar aquí'),
                   ),
@@ -540,7 +538,7 @@ class VentanaSearch extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () {
-                      // Acción al presionar el botón "search"
+
                     },
                   ),
                   IconButton(
@@ -636,7 +634,7 @@ class VentanaUpload extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    height: 140, // Altura del contenedor en blanco para ajustar el espaciado
+                    height: 140,
                     color: Colors.white,
                   ),
                   TextFormField(
@@ -655,7 +653,7 @@ class VentanaUpload extends StatelessWidget {
                     decoration: InputDecoration(labelText: 'Hora'),
                   ),
                   Container(
-                    height: 20, // Altura del contenedor en blanco para ajustar el espaciado
+                    height: 20,
                     color: Colors.white,
                   ),
                   SizedBox(height: 16.0),
@@ -675,12 +673,12 @@ class VentanaUpload extends StatelessWidget {
                       ),
                       child: Text('Cargar imagenes', style: TextStyle(color: Colors.white)),
                       onPressed: () {
-                        // Acción al presionar el botón "Cargar imagen"
+
                       },
                     ),
                   ),
                   Container(
-                    height: 40, // Altura del contenedor en blanco para ajustar el espaciado
+                    height: 40,
                     color: Colors.white,
                   ),
                   SizedBox(height: 16.0),
@@ -748,7 +746,7 @@ class VentanaProfile extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          height: 15, // Altura del contenedor en blanco para ajustar el espaciado
+                          height: 15,
                           color: Colors.white,
                         ),
                         Text(
@@ -897,7 +895,10 @@ class VentanaProfile extends StatelessWidget {
             backgroundColor: Colors.purple,
             child: Icon(Icons.settings),
             onPressed: () {
-              // Acción al presionar el botón de configuración
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserProfileConfigScreen()),
+              );
             },
           ),
         ),
@@ -1166,6 +1167,60 @@ class ventanaNotificaciones extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
               label: '',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+class UserProfileConfigScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Configuración de perfil'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Nombre de usuario',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Ingresa tu nombre de usuario',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Correo electrónico',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Ingresa tu correo electrónico',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+
+              },
+              child: Text('Guardar cambios'),
             ),
           ],
         ),
