@@ -320,7 +320,7 @@ class VentanaHome extends StatelessWidget {
       body: ListView(
         children: [
           _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/profile2.jpeg', 'Adry_', 'Fin de semana en Benidorm', '¡Sol, playa, diversión y relax te esperan! #fyp'),
-          _buildVideoCard(context, 'assets/imagenes/scroll1.mp4','assets/imagenes/profile3.jpeg', 'Nano33', 'Arenal sound', 'Consulta  toda la información del festival en la web arenalsound.com'),
+          _buildVideoCard(context, 'assets/imagenes/scroll2.mp4','assets/imagenes/profile3.jpeg', 'Nano33', 'Arenal sound', 'Consulta  toda la información del festival en la web arenalsound.com'),
         ],
       ),
       bottomNavigationBar: Container(
@@ -399,7 +399,9 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
   return SizedBox(
       width: 500,
       height: 400,
+
       child: Card(
+
         margin: EdgeInsets.symmetric(vertical: 2, horizontal: 16),
 
     child: Stack(
@@ -411,8 +413,10 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
         Positioned(
           left: 16,
           bottom: 16,
+
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
               Row(
                 children: [
@@ -423,7 +427,7 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
                   SizedBox(width: 8),
                   Text(
                     username,
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -431,14 +435,14 @@ Widget _buildVideoCard(BuildContext context, String videoPath, String imagePath,
               Text(
                 title,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 4),
               Text(
                 description,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 8),
               Row(
@@ -829,10 +833,10 @@ class VentanaProfile extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => EventWindow()),
                       );
                     },
-                    child: Image.asset('assets/imagenes/post2.jpg'),
+                    child: Image.asset('assets/imagenes/post1.jpg'),
                   ),
-                   Image.asset('ruta_de_la_imagen_2'),
-                   Image.asset('ruta_de_la_imagen_3'),
+                   Image.asset('assets/imagenes/post2.jpg'),
+                   //Image.asset('ruta_de_la_imagen_3'),
           ],
           ),
 
@@ -850,7 +854,10 @@ class VentanaProfile extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.home),
                     onPressed: () {
-                      // Acción al presionar el botón "home"
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => VentanaSearch()),
+                      );
                     },
                   ),
                   IconButton(
