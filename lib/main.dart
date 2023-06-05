@@ -797,17 +797,25 @@ class VentanaProfile extends StatelessWidget {
           Divider(), // Línea divisora para separar el perfil del grid de fotos
           Expanded(
             child: GridView.count(
-              crossAxisCount: 1, // Número de fotos por fila
+              crossAxisCount: 1,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
               padding: EdgeInsets.all(16.0),
-              children: [
-                Image.asset('assets/imagenes/post2.jpg'), // Reemplaza con la ruta de la imagen 1
-                Image.asset('ruta_de_la_imagen_2'), // Reemplaza con la ruta de la imagen 2
-                Image.asset('ruta_de_la_imagen_3'), // Reemplaza con la ruta de la imagen 3
-                // Agrega más imágenes según sea necesario
-              ],
-            ),
+               children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EventWindow()),
+                      );
+                    },
+                    child: Image.asset('assets/imagenes/post2.jpg'),
+                  ),
+                   Image.asset('ruta_de_la_imagen_2'),
+                   Image.asset('ruta_de_la_imagen_3'),
+          ],
+          ),
+
           ),
           Positioned(
             bottom: 0,
@@ -875,3 +883,100 @@ class VentanaProfile extends StatelessWidget {
     );
   }
 }
+class EventWindow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Padding(
+          padding: EdgeInsets.only(bottom: 8.0),
+          child: Center(
+            child: Text(
+              'Picnic en el Retiro',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                child: Image.asset(
+                  'assets/imagenes/post1.jpg',
+                  width: 200,
+                  height: 200,
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Lugar:',
+              style: TextStyle(fontSize: 18, color: Colors.purple),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Parque del Retiro, Madrid',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Fecha:',
+              style: TextStyle(fontSize: 18, color: Colors.purple),
+            ),
+            SizedBox(height: 8),
+            Text(
+              '5/6/2023',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Descripción:',
+              style: TextStyle(fontSize: 18, color: Colors.purple),
+            ),
+            SizedBox(height: 8),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32.0),
+              child: Text(
+                'El Parque del Retiro es un lugar icónico y popular en Madrid. Ofrece un ambiente tranquilo y relajante, perfecto para pasear, correr o simplemente disfrutar del aire libre. Con sus hermosos jardines, fuentes y estanques, es un plan perfecto para cualquier persona que busque pasar tiempo de calidad con amigos.',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Reseñas:',
+              style: TextStyle(fontSize: 18, color: Colors.purple),
+            ),
+            
+            SizedBox(height: 16),
+            RichText(
+              text: TextSpan(
+                text: 'User_anónimo1:\n',
+                style: TextStyle(fontSize: 18, color: Colors.blue),
+                children: [
+                  TextSpan(
+                    text: 'Los jardines del Parque del Retiro en Madrid son impresionantes',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
